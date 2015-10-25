@@ -5,15 +5,16 @@ using System;
 
 public class MapGeneratorThreeD : MonoBehaviour
 {
-    [Range(50, 600)]
+    [Range(0, 600)]
     public int width;
-    [Range(50, 600)]
+    [Range(0, 600)]
     public int height;
-    [Range(50, 600)]
+    [Range(0, 600)]
     public int depth;
     public int borderSize;
     public int roomThresholdSize;
     public int squareSize;
+    public int smoothing;
 
     public string seed;
     public bool useRandomSeed;
@@ -28,17 +29,25 @@ public class MapGeneratorThreeD : MonoBehaviour
         GenerateMap();
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            GenerateMap();
+        }
+    }
+
     void GenerateMap()
     {
         map = new int[width, height, depth];
         RandomFillMap();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < smoothing; i++)
         {
             SmoothMap();
         }
 
-        ProcessMap();
+        //ProcessMap();
 
         int[,,] borderedMap = new int[width + borderSize * 2, height + borderSize * 2, depth + borderSize * 2];
 
@@ -48,7 +57,7 @@ public class MapGeneratorThreeD : MonoBehaviour
             {
                 for (int z = 0; z < borderedMap.GetLength(2); z++)
                 {
-                    if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize)
+                    if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize && z >= borderSize && z < depth + borderSize)
                     {
                         borderedMap[x, y, z] = map[x - borderSize, y - borderSize, z - borderSize];
                     }
@@ -313,13 +322,13 @@ public class MapGeneratorThreeD : MonoBehaviour
             switch (Convert.ToInt32(inverted/2))
             {
                 case 0:
-                    x++;
+                    x+= stepL;
                     break;
                 case 1:
-                    y++;
+                    y += stepL;
                     break;
                 case 2:
-                    z++;
+                    z += stepL;
                     break;
             }
 
@@ -469,7 +478,7 @@ public class MapGeneratorThreeD : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                for (int z = 0; z < height; z++)
+                for (int z = 0; z < depth; z++)
                 {
                     if (x == 0 || x == width - 1 || y == 0 || y == height - 1 || z == 0 || z == depth - 1)
                     {
@@ -493,10 +502,9 @@ public class MapGeneratorThreeD : MonoBehaviour
                 for (int z = 0; z < depth; z++)
                 {
                     int neighbourWallTiles = GetSurroundingWallCount(x, y, z);
-
-                    if (neighbourWallTiles > 13)
+                    if (neighbourWallTiles > 18)
                         map[x, y, z] = 1;
-                    else if (neighbourWallTiles < 13)
+                    else if (neighbourWallTiles < 10)
                         map[x, y, z] = 0;
                 }
 

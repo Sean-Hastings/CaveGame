@@ -41,17 +41,65 @@ public class MeshGeneratorThreeD : MonoBehaviour
             }
         }
 
-        Mesh mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        //Mesh mesh = new Mesh();
+        //GetComponent<MeshFilter>().mesh = mesh;
 
-        mesh.vertices = vertices.ToArray();
-        mesh.triangles = triangles.ToArray();
-        mesh.RecalculateNormals();
+        //mesh.vertices = vertices.ToArray();
+        //mesh.triangles = triangles.ToArray();
+        //mesh.RecalculateNormals();
 
-        CreateWallMesh();
+        //CreateWallMesh();
     }
 
-    void CreateWallMesh()
+    void OnDrawGizmos()
+    {
+        if (squareGrid != null) {
+            for (int x = 0; x < squareGrid.cubes.GetLength(0); x ++) {
+                for (int y = 0; y < squareGrid.cubes.GetLength(1); y ++)
+                {
+                    for (int z = 0; z < squareGrid.cubes.GetLength(2); z++)
+                    {
+                        Gizmos.color = Color.black;
+                        if (squareGrid.cubes[x, y, z].topLeftFront.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftFront.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].topLeftFront.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftFront.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].topRightFront.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightFront.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].bottomRightFront.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightFront.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].bottomLeftFront.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftFront.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].topLeftBack.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftBack.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].topRightBack.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightBack.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].bottomRightBack.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightBack.position, Vector3.one * .4f);
+                        if (squareGrid.cubes[x, y, z].bottomLeftBack.active)
+                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftBack.position, Vector3.one * .4f);
+                        /*
+                        Gizmos.color = Color.grey;
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerTopFront.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerRightFront.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerBottomFront.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerLeftFront.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftCenter.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightCenter.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightCenter.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftCenter.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerTopBack.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerRightBack.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerBottomBack.position, Vector3.one * .15f);
+                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerLeftBack.position, Vector3.one * .15f);
+                        */
+                    }
+                }
+            }
+		}
+	}
+	
+	void CreateWallMesh()
     {
 
         CalculateMeshOutlines();

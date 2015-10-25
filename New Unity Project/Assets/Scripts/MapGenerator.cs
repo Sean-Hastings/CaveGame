@@ -26,6 +26,14 @@ public class MapGenerator : MonoBehaviour
         GenerateMap();
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            GenerateMap();
+        }
+    }
+
     void GenerateMap()
     {
         map = new int[width, height];
@@ -346,7 +354,6 @@ public class MapGenerator : MonoBehaviour
         return x >= 0 && x < width && y >= 0 && y < height;
     }
 
-
     void RandomFillMap()
     {
         if (useRandomSeed)
@@ -424,7 +431,6 @@ public class MapGenerator : MonoBehaviour
             tileY = y;
         }
     }
-
 
     class Room : IComparable<Room>
     {
