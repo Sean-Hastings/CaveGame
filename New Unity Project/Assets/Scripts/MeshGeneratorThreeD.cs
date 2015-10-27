@@ -117,6 +117,10 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			square.rotateRightVert();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
 			break;
+		case 60:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
+			break;
 		case 64:
 			square.rotateRightVert();
 			square.rotateRightVert();
@@ -129,6 +133,17 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			square.rotateRightVert();
 			square.rotateRightVert();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 195:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 240:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
 			break;
 
 			/*
@@ -153,13 +168,13 @@ public class MeshGeneratorThreeD : MonoBehaviour
         AssignVertices(points);
 
         if (points.Length >= 6)
-			CreateTriangle(points[5], points[4], points[0]);
+			CreateTriangle(points[0], points[4], points[5]);
 		if (points.Length >= 5)
-			CreateTriangle(points[4], points[3], points[0]);
+			CreateTriangle(points[0], points[3], points[4]);
 		if (points.Length >= 4)
-			CreateTriangle(points[3], points[2], points[0]);
+			CreateTriangle(points[0], points[2], points[3]);
 		if (points.Length >= 3)
-			CreateTriangle(points[2], points[1], points[0]);
+			CreateTriangle(points[0], points[1], points[2]);
 
     }
 
@@ -347,14 +362,14 @@ public class MeshGeneratorThreeD : MonoBehaviour
                     for (int z = 0; z < nodeCountZ - 1; z++)
                     {
                         cubes[x, y, z] = new Cube(
-                            controlNodes[x, y + 1, z], 
-                            controlNodes[x + 1, y + 1, z], 
+                            controlNodes[x, y , z + 1], 
+                            controlNodes[x + 1, y , z + 1], 
                             controlNodes[x + 1, y, z], 
                             controlNodes[x, y, z],
                             controlNodes[x, y + 1, z + 1],
                             controlNodes[x + 1, y + 1, z + 1],
-                            controlNodes[x + 1, y, z + 1],
-                            controlNodes[x, y, z + 1]);
+                            controlNodes[x + 1, y + 1, z],
+                            controlNodes[x, y + 1, z]);
                     }
                 }
             }
@@ -409,7 +424,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
             centerTopFront = topLeftFront.right;
             centerRightFront = bottomRightFront.above;
-            centerBottomFront = bottomRightFront.right;
+            centerBottomFront = bottomLeftFront.right;
             centerLeftFront = bottomLeftFront.above;
 			topLeftCenter = topLeftBack.behind;
 			topRightCenter = topRightBack.behind;
