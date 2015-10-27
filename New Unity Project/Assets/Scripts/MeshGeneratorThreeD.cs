@@ -36,165 +36,115 @@ public class MeshGeneratorThreeD : MonoBehaviour
             {
                 for (int z = 0; z < squareGrid.cubes.GetLength(2); z++)
                 {
-                    TriangulateSquare(squareGrid.cubes[x, y, z]);
+                    TriangulateCube(squareGrid.cubes[x, y, z]);
                 }
             }
         }
 
-        //Mesh mesh = new Mesh();
-        //GetComponent<MeshFilter>().mesh = mesh;
+        Mesh mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = mesh;
 
-        //mesh.vertices = vertices.ToArray();
-        //mesh.triangles = triangles.ToArray();
-        //mesh.RecalculateNormals();
-
-        //CreateWallMesh();
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = triangles.ToArray();
+        mesh.RecalculateNormals();
     }
 
-    void OnDrawGizmos()
-    {
-        if (squareGrid != null) {
-            for (int x = 0; x < squareGrid.cubes.GetLength(0); x ++) {
-                for (int y = 0; y < squareGrid.cubes.GetLength(1); y ++)
-                {
-                    for (int z = 0; z < squareGrid.cubes.GetLength(2); z++)
-                    {
-                        Gizmos.color = Color.black;
-                        if (squareGrid.cubes[x, y, z].topLeftFront.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftFront.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].topLeftFront.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftFront.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].topRightFront.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightFront.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].bottomRightFront.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightFront.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].bottomLeftFront.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftFront.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].topLeftBack.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftBack.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].topRightBack.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightBack.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].bottomRightBack.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightBack.position, Vector3.one * .4f);
-                        if (squareGrid.cubes[x, y, z].bottomLeftBack.active)
-                            Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftBack.position, Vector3.one * .4f);
-                        /*
-                        Gizmos.color = Color.grey;
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerTopFront.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerRightFront.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerBottomFront.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerLeftFront.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].topLeftCenter.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].topRightCenter.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomRightCenter.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].bottomLeftCenter.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerTopBack.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerRightBack.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerBottomBack.position, Vector3.one * .15f);
-                        Gizmos.DrawCube(squareGrid.cubes[x, y, z].centerLeftBack.position, Vector3.one * .15f);
-                        */
-                    }
-                }
-            }
-		}
-	}
-	
-	void CreateWallMesh()
-    {
-
-        CalculateMeshOutlines();
-
-        List<Vector3> wallVertices = new List<Vector3>();
-        List<int> wallTriangles = new List<int>();
-        Mesh wallMesh = new Mesh();
-
-        foreach (List<int> outline in outlines)
-        {
-            for (int i = 0; i < outline.Count - 1; i++)
-            {
-                int startIndex = wallVertices.Count;
-                wallVertices.Add(vertices[outline[i]]); // left
-                wallVertices.Add(vertices[outline[i + 1]]); // right
-                wallVertices.Add(vertices[outline[i]] - Vector3.up * squareSize); // bottom left
-                wallVertices.Add(vertices[outline[i + 1]] - Vector3.up * squareSize); // bottom right
-
-                wallTriangles.Add(startIndex + 0);
-                wallTriangles.Add(startIndex + 2);
-                wallTriangles.Add(startIndex + 3);
-
-                wallTriangles.Add(startIndex + 3);
-                wallTriangles.Add(startIndex + 1);
-                wallTriangles.Add(startIndex + 0);
-            }
-        }
-        wallMesh.vertices = wallVertices.ToArray();
-        wallMesh.triangles = wallTriangles.ToArray();
-        walls.mesh = wallMesh;
-    }
-
-    void TriangulateSquare(Cube square)
+    void TriangulateCube(Cube square)
     {
         switch (square.configuration)
         {
-            case 0:
-                break;
+        case 0:
+            break;
 
-            // 1 points:
-            case 1:
-                MeshFromPoints(square.centerLeftFront, square.centerBottomFront, square.bottomLeftFront);
-                break;
-            case 2:
-                MeshFromPoints(square.bottomRightFront, square.centerBottomFront, square.centerRightFront);
-                break;
-            case 4:
-                MeshFromPoints(square.topRightFront, square.centerRightFront, square.centerTopFront);
-                break;
-            case 8:
-                MeshFromPoints(square.topLeftFront, square.centerTopFront, square.centerLeftFront);
-                break;
+        // 1 points:
+        case 1:
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+            break;
+        case 2:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 3:
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 4:
+			square.rotateRightVert();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 5:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+			/*
+		case 6:
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.centerLeftBack, square.centerRightFront);
+			MeshFromPoints(square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.centerLeftBack);
+			break;
+			*/
+		case 8:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+			/*
+		case 9:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.centerLeftBack, square.centerRightFront);
+			MeshFromPoints(square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.centerLeftBack);
+			break;
+			*/
+		case 10:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 12:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 15:
+			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 16:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 32:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 64:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		case 128:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
 
-            // 2 points:
-            case 3:
-                MeshFromPoints(square.centerRightFront, square.bottomRightFront, square.bottomLeftFront, square.centerLeftFront);
-                break;
-            case 6:
-                MeshFromPoints(square.centerTopFront, square.topRightFront, square.bottomRightFront, square.centerBottomFront);
-                break;
-            case 9:
-                MeshFromPoints(square.topLeftFront, square.centerTopFront, square.centerBottomFront, square.bottomLeftFront);
-                break;
-            case 12:
-                MeshFromPoints(square.topLeftFront, square.topRightFront, square.centerRightFront, square.centerLeftFront);
-                break;
-            case 5:
-                MeshFromPoints(square.centerTopFront, square.topRightFront, square.centerRightFront, square.centerBottomFront, square.bottomLeftFront, square.centerLeftFront);
-                break;
-            case 10:
-                MeshFromPoints(square.topLeftFront, square.centerTopFront, square.centerRightFront, square.bottomRightFront, square.centerBottomFront, square.centerLeftFront);
-                break;
-
-            // 3 point:
-            case 7:
-                MeshFromPoints(square.centerTopFront, square.topRightFront, square.bottomRightFront, square.bottomLeftFront, square.centerLeftFront);
-                break;
-            case 11:
-                MeshFromPoints(square.topLeftFront, square.centerTopFront, square.centerRightFront, square.bottomRightFront, square.bottomLeftFront);
-                break;
-            case 13:
-                MeshFromPoints(square.topLeftFront, square.topRightFront, square.centerRightFront, square.centerBottomFront, square.bottomLeftFront);
-                break;
-            case 14:
-                MeshFromPoints(square.topLeftFront, square.topRightFront, square.bottomRightFront, square.centerBottomFront, square.centerLeftFront);
-                break;
-
-            // 4 point:
-            case 15:
-                MeshFromPoints(square.topLeftFront, square.topRightFront, square.bottomRightFront, square.bottomLeftFront);
-                checkedVertices.Add(square.topLeftFront.vertexIndex);
-                checkedVertices.Add(square.topRightFront.vertexIndex);
-                checkedVertices.Add(square.bottomRightFront.vertexIndex);
-                checkedVertices.Add(square.bottomLeftFront.vertexIndex);
-                break;
+			/*
+            centerTopFront
+            centerRightFront
+            centerBottomFront
+            centerLeftFront
+            topLeftCenter
+            topRightCenter
+            bottomRightCenter
+            bottomLeftCenter
+            centerTopBack
+            centerRightBack
+            centerBottomBack
+            centerLeftBack
+			*/
         }
     }
 
@@ -202,14 +152,14 @@ public class MeshGeneratorThreeD : MonoBehaviour
     {
         AssignVertices(points);
 
-        if (points.Length >= 3)
-            CreateTriangle(points[0], points[1], points[2]);
-        if (points.Length >= 4)
-            CreateTriangle(points[0], points[2], points[3]);
-        if (points.Length >= 5)
-            CreateTriangle(points[0], points[3], points[4]);
         if (points.Length >= 6)
-            CreateTriangle(points[0], points[4], points[5]);
+			CreateTriangle(points[5], points[4], points[0]);
+		if (points.Length >= 5)
+			CreateTriangle(points[4], points[3], points[0]);
+		if (points.Length >= 4)
+			CreateTriangle(points[3], points[2], points[0]);
+		if (points.Length >= 3)
+			CreateTriangle(points[2], points[1], points[0]);
 
     }
 
@@ -458,35 +408,103 @@ public class MeshGeneratorThreeD : MonoBehaviour
             bottomLeftBack = _bottomLeftBack;
 
             centerTopFront = topLeftFront.right;
-            centerRightFront = topRightFront.above;
+            centerRightFront = bottomRightFront.above;
             centerBottomFront = bottomRightFront.right;
             centerLeftFront = bottomLeftFront.above;
-            topLeftCenter = topLeftFront.behind;
-            topRightCenter = topRightFront.behind;
-            bottomRightCenter = bottomRightFront.behind;
-            bottomLeftCenter = bottomLeftFront.behind;
+			topLeftCenter = topLeftBack.behind;
+			topRightCenter = topRightBack.behind;
+			bottomRightCenter = bottomRightBack.behind;
+			bottomLeftCenter = bottomLeftBack.behind;
             centerTopBack = topLeftBack.right;
-            centerRightBack = topRightBack.above;
-            centerBottomBack = bottomRightBack.right;
+            centerRightBack = bottomRightBack.above;
+            centerBottomBack = bottomLeftBack.right;
             centerLeftBack = bottomLeftBack.above;
 
             if (topLeftFront.active)
-                configuration += 128;
+				configuration += 1;
+			if (topLeftBack.active)
+				configuration += 2;
             if (topRightFront.active)
-                configuration += 64;
-            if (bottomRightFront.active)
-                configuration += 32;
-            if (bottomLeftFront.active)
-                configuration += 16;
-            if (topLeftBack.active)
-                configuration += 8;
-            if (topRightBack.active)
                 configuration += 4;
+            if (topRightBack.active)
+				configuration += 8;
+			if (bottomRightFront.active)
+				configuration += 16;
             if (bottomRightBack.active)
-                configuration += 2;
+				configuration += 32;
+			if (bottomLeftFront.active)
+				configuration += 64;
             if (bottomLeftBack.active)
-                configuration += 1;
+                configuration += 128;
         }
+
+		public void rotateRightVert()
+		{
+			ControlNode tempBLF = bottomLeftFront,
+			tempBLB = bottomLeftBack;
+
+			Node tempBLC = bottomLeftCenter,
+			tempCLF = centerLeftFront,
+			tempCLB = centerLeftBack;
+			
+			bottomLeftFront = bottomRightFront;
+			bottomLeftCenter = bottomRightCenter;
+			bottomLeftBack = bottomRightBack;
+			centerLeftFront = centerBottomFront;
+			centerLeftBack = centerBottomBack;
+			
+			bottomRightFront = topRightFront;
+			bottomRightCenter = topRightCenter;
+			bottomRightBack = topRightBack;
+			centerBottomFront = centerRightFront;
+			centerBottomBack = centerRightBack;
+			
+			topRightFront = topLeftFront;
+			topRightCenter = topLeftCenter;
+			topRightBack = topLeftBack;
+			centerRightFront = centerTopFront;
+			centerRightBack = centerTopBack;
+			
+			topLeftFront = tempBLF;
+			topLeftCenter = tempBLC;
+			topLeftBack = tempBLB;
+			centerTopFront = tempCLF;
+			centerTopBack = tempCLB;
+		}
+		
+		public void rotateRightHoriz()
+		{
+			ControlNode tempTLF = topLeftFront,
+			tempBLF = bottomLeftFront;
+
+			Node tempCLF = centerLeftFront,
+			tempTLC = topLeftCenter,
+			tempBLC = bottomLeftCenter;
+			
+			topLeftFront = topRightFront;
+			centerLeftFront = centerRightFront;
+			bottomLeftFront = bottomRightFront;
+			topLeftCenter = centerTopFront;
+			bottomLeftCenter = centerBottomFront;
+			
+			topRightFront = topRightBack;
+			centerRightFront = centerRightBack;
+			bottomRightFront = bottomRightBack;
+			centerTopFront = topRightCenter;
+			centerBottomFront = bottomRightCenter;
+			
+			topRightBack = topLeftBack;
+			centerRightBack = centerLeftBack;
+			bottomRightBack = bottomLeftBack;
+			topRightCenter = centerTopBack;
+			bottomRightCenter = centerBottomBack;
+			
+			topLeftBack = tempTLF;
+			centerLeftBack = tempCLF;
+			bottomLeftBack = tempBLF;
+			centerTopBack = tempTLC;
+			centerBottomBack = tempBLC;
+		}
     }
 
     public class Node
