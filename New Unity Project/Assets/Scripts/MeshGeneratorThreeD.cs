@@ -59,52 +59,21 @@ public class MeshGeneratorThreeD : MonoBehaviour
         // 1 points:
         case 1:
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
-            break;
-        case 2:
+			break;
+		case 2:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
-			break;
-		case 3:
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
 			break;
 		case 4:
-			square.rotateRightVert();
+			square.rotateRightHoriz();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
 			break;
-		case 5:
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
-			break;
-			/*
-		case 6:
-			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.centerLeftBack, square.centerRightFront);
-			MeshFromPoints(square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.centerLeftBack);
-			break;
-			*/
 		case 8:
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
-			break;
-			/*
-		case 9:
-			square.rotateRightHoriz();
-			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.centerLeftBack, square.centerRightFront);
-			MeshFromPoints(square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.centerLeftBack);
-			break;
-			*/
-		case 10:
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
-			break;
-		case 12:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
-			break;
-		case 15:
-			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
 			break;
 		case 16:
 			square.rotateRightVert();
@@ -117,49 +86,525 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			square.rotateRightVert();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
 			break;
-		case 60:
-			square.rotateRightVert();
-			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
-			break;
 		case 64:
-			square.rotateRightVert();
-			square.rotateRightVert();
 			square.rotateRightVert();
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
 			break;
 		case 128:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			break;
+		
+		// 2 points
+		case 3:
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 5:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 10:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 12:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 20:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 40:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 48:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 65:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 80:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 130:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 160:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+		case 192:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			break;
+
+		case 9:
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 6:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 17:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 24:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 34:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 36:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 66:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 68:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 96:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 136:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+		case 144:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			break;
+			
+		case 18:
+			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
+			break;
+		case 33:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
+			break;
+		case 72:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
+			break;
+		case 132:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
+			break;
+
+		// 3 points
+		case 7:
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 11:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 13:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 14:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 21:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 28:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 42:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 44:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 52:
 			square.rotateRightHoriz();
 			square.rotateRightVert();
 			square.rotateRightVert();
 			square.rotateRightVert();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
 			break;
-		case 195:
+		case 56:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightVert();
-			square.rotateRightVert();
-			square.rotateRightVert();
-			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
 			break;
-		case 240:
+		case 67:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 69:
 			square.rotateRightVert();
 			square.rotateRightVert();
-			MeshFromPoints(square.centerRightFront, square.centerRightBack, square.centerLeftBack, square.centerLeftFront);
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 81:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 84:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 112:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 131:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 138:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 162:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 168:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 176:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 193:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 194:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 208:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
+			break;
+		case 224:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftFront, square.centerRightFront, square.topRightCenter, square.centerTopBack, square.centerLeftBack);
 			break;
 
-			/*
-            centerTopFront
-            centerRightFront
-            centerBottomFront
-            centerLeftFront
-            topLeftCenter
-            topRightCenter
-            bottomRightCenter
-            bottomLeftCenter
-            centerTopBack
-            centerRightBack
-            centerBottomBack
-            centerLeftBack
-			*/
+		case 22:
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 19:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 26:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 35:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 37:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 41:
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 49:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 50:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 73:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 74:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 76:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 82:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 88:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 97:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 104:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 133:
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 134:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 140:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 148:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 156:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 161:
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 164:
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 196:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
+		case 200:
+			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerBottomFront, square.topLeftCenter, square.centerTopFront);
+			MeshFromPoints(square.topRightCenter, square.centerTopBack, square.bottomRightCenter);
+			break;
         }
     }
 
