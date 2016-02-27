@@ -1,26 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class Boundary
-{
-    public float xMin, xMax, zMin, zMax;
-}
-
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-    public float tilt;
-    public Boundary boundary;
-    public float angle;
+ 	public float force;
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.acceleration.x;
-        angle = (angle + moveHorizontal * 2) % 360;
+		float moveHorizontal = Input.acceleration.x;
+		float moveVertical   = Input.acceleration.z + .5f;
         
-        GetComponent<Rigidbody>().position += new Vector3(Mathf.Sin(angle * Mathf.PI / 180), 0.0f, Mathf.Cos(angle * Mathf.PI / 180)) * speed;
+		GetComponent<Rigidbody>().AddRelativeForce( new Vector3(0, 0, force) );
 
-        GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, angle + moveHorizontal * tilt * 5, moveHorizontal * -tilt * 5);
+		GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(-moveVertical/2, 0, -moveHorizontal/2) );
     }
+
+	public void setForce(float newForce)
+	{
+		force = newForce;
+	}
 }
