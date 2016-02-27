@@ -47,6 +47,9 @@ public class MeshGeneratorThreeD : MonoBehaviour
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
+
+
+		GetComponent<MeshCollider>().sharedMesh = mesh;
     }
 
     void TriangulateCube(Cube square)
