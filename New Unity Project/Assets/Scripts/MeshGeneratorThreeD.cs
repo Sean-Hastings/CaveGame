@@ -48,9 +48,16 @@ public class MeshGeneratorThreeD : MonoBehaviour
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
 
-
 		GetComponent<MeshCollider>().sharedMesh = mesh;
     }
+
+	void OnDrawGizmos()
+	{
+		foreach(var place in vertices)
+		{
+			Gizmos.DrawSphere (place, 5);
+		}
+	}
 
     void TriangulateCube(Cube square)
     {
