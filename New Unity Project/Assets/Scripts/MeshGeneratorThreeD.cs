@@ -9,6 +9,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
     public MeshFilter walls;
 
     float squareSize;
+	int giz = 0;
 
     List<Vector3> vertices;
     List<int> triangles;
@@ -50,12 +51,32 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
 		GetComponent<MeshCollider>().sharedMesh = mesh;
     }
-
+		
 	void OnDrawGizmos()
 	{
-		foreach(var place in vertices)
+		giz = giz + 1;
+		for (int x = 0; x < squareGrid.cubes.GetLength(0); x++)
 		{
-			Gizmos.DrawSphere (place, 5);
+			for (int y = 0; y < squareGrid.cubes.GetLength(1); y++)
+			{
+				for (int z = 0; z < squareGrid.cubes.GetLength(2); z++)
+				{
+					Gizmos.color = new Color (.7f, .7f, .7f);
+					foreach (var node in squareGrid.cubes[x, y, z].getNodes())
+					{
+						Gizmos.DrawSphere (node.position, .75f);
+					}
+
+					foreach (var node in squareGrid.cubes[x, y, z].getActiveControlNodes())
+					{
+						if (node.active)
+							Gizmos.color = new Color (.1f, .1f, .1f);
+						else
+							Gizmos.color = new Color (.3f, .3f, .3f);
+						Gizmos.DrawSphere (node.position, 1.5f);
+					}
+				}
+			}
 		}
 	}
 
@@ -2041,6 +2062,21 @@ public class MeshGeneratorThreeD : MonoBehaviour
             if (bottomLeftBack.active)
                 configuration += 128;
         }
+
+		public Node[] getNodes()
+		{
+			return new Node[]
+			{centerTopFront, centerRightFront, centerBottomFront, centerLeftFront, centerTopBack, centerRightBack, centerBottomBack, centerLeftBack, topLeftCenter, topRightCenter, bottomRightCenter, bottomLeftCenter};
+		}
+
+		public ControlNode[] getActiveControlNodes()
+		{
+			ControlNode[] all = new ControlNode[]
+				{topLeftBack, bottomLeftBack, topLeftFront, bottomLeftFront, topRightBack, bottomRightBack, topRightFront, bottomRightFront};
+
+
+			return all;
+		}
 
 		public void rotateRightVert()
 		{
