@@ -51,7 +51,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
 		GetComponent<MeshCollider>().sharedMesh = mesh;
     }
-		
+	/*
 	void OnDrawGizmos()
 	{
 		giz = giz + 1;
@@ -70,16 +70,27 @@ public class MeshGeneratorThreeD : MonoBehaviour
 					foreach (var node in squareGrid.cubes[x, y, z].getActiveControlNodes())
 					{
 						if (node.active)
-							Gizmos.color = new Color (.1f, .1f, .1f);
+							Gizmos.color = new Color (1f, .1f, .1f);
 						else
-							Gizmos.color = new Color (.3f, .3f, .3f);
+							Gizmos.color = new Color (.1f, .1f, 1f);
 						Gizmos.DrawSphere (node.position, 1.5f);
+						/*
+
+						Gizmos.color = new Color (.1f, 1f, 1f);
+						Gizmos.DrawLine (node.position, node.left.position);
+
+						Gizmos.color = new Color (1f, 1f, .1f);
+						Gizmos.DrawLine (node.position, node.above.position);
+
+						Gizmos.color = new Color (1f, .1f, 1f);
+						Gizmos.DrawLine (node.position, node.front.position);
+
 					}
 				}
 			}
 		}
 	}
-
+*/
     void TriangulateCube(Cube square)
     {
         switch (square.configuration)
@@ -1972,14 +1983,14 @@ public class MeshGeneratorThreeD : MonoBehaviour
                     for (int z = 0; z < nodeCountZ - 1; z++)
                     {
                         cubes[x, y, z] = new Cube(
-                            controlNodes[x, y , z + 1], 
-                            controlNodes[x + 1, y , z + 1], 
-                            controlNodes[x + 1, y, z], 
-                            controlNodes[x, y, z],
-                            controlNodes[x, y + 1, z + 1],
-                            controlNodes[x + 1, y + 1, z + 1],
-                            controlNodes[x + 1, y + 1, z],
-                            controlNodes[x, y + 1, z]);
+							controlNodes[x  , y+1, z+1], 
+							controlNodes[x+1, y+1, z+1], 
+							controlNodes[x+1, y  , z+1], 
+							controlNodes[x  , y  , z+1],
+							controlNodes[x  , y+1, z  ],
+							controlNodes[x+1, y+1, z  ],
+							controlNodes[x+1, y  , z  ],
+							controlNodes[x  , y  , z  ]);
                     }
                 }
             }
@@ -2023,27 +2034,27 @@ public class MeshGeneratorThreeD : MonoBehaviour
             ControlNode _bottomRightBack, 
             ControlNode _bottomLeftBack)
         {
-            topLeftFront = _topLeftFront;
-            topRightFront = _topRightFront;
-            bottomRightFront = _bottomRightFront;
-            bottomLeftFront = _bottomLeftFront;
-            topLeftBack = _topLeftBack;
-            topRightBack = _topRightBack;
-            bottomRightBack = _bottomRightBack;
-            bottomLeftBack = _bottomLeftBack;
+            topLeftFront      = _topLeftFront;
+            topRightFront     = _topRightFront;
+            bottomRightFront  = _bottomRightFront;
+            bottomLeftFront   = _bottomLeftFront;
+            topLeftBack       = _topLeftBack;
+            topRightBack      = _topRightBack;
+            bottomRightBack   = _bottomRightBack;
+            bottomLeftBack    = _bottomLeftBack;
 
-            centerTopFront = topLeftFront.right;
-            centerRightFront = bottomRightFront.above;
-            centerBottomFront = bottomLeftFront.right;
-            centerLeftFront = bottomLeftFront.above;
-			topLeftCenter = topLeftBack.behind;
-			topRightCenter = topRightBack.behind;
-			bottomRightCenter = bottomRightBack.behind;
-			bottomLeftCenter = bottomLeftBack.behind;
-            centerTopBack = topLeftBack.right;
-            centerRightBack = bottomRightBack.above;
-            centerBottomBack = bottomLeftBack.right;
-            centerLeftBack = bottomLeftBack.above;
+			centerTopFront    = topRightFront.left;
+            centerRightFront  = bottomRightFront.above;
+			centerBottomFront = bottomRightFront.left;
+            centerLeftFront   = bottomLeftFront.above;
+			topLeftCenter     = topLeftBack.front;
+			topRightCenter    = topRightBack.front;
+			bottomRightCenter = bottomRightBack.front;
+			bottomLeftCenter  = bottomLeftBack.front;
+			centerTopBack     = topRightBack.left;
+            centerRightBack   = bottomRightBack.above;
+			centerBottomBack  = bottomRightBack.left;
+            centerLeftBack    = bottomLeftBack.above;
 
             if (topLeftFront.active)
 				configuration += 1;
@@ -2071,11 +2082,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
 		public ControlNode[] getActiveControlNodes()
 		{
-			ControlNode[] all = new ControlNode[]
-				{topLeftBack, bottomLeftBack, topLeftFront, bottomLeftFront, topRightBack, bottomRightBack, topRightFront, bottomRightFront};
-
-
-			return all;
+			return new ControlNode[]
+			{topLeftBack, bottomLeftBack, topLeftFront, bottomLeftFront, topRightBack, bottomRightBack, topRightFront, bottomRightFront};;
 		}
 
 		public void rotateRightVert()
@@ -2162,14 +2170,14 @@ public class MeshGeneratorThreeD : MonoBehaviour
     {
 
         public bool active;
-        public Node above, right, behind;
+        public Node above, left, front;
 
         public ControlNode(Vector3 _pos, bool _active, float squareSize) : base(_pos)
         {
             active = _active;
-            above = new Node(position + Vector3.forward * squareSize / 2f);
-            right = new Node(position + Vector3.right * squareSize / 2f);
-            behind = new Node(position + Vector3.up * squareSize / 2f);
+			front = new Node(position + Vector3.up * squareSize / 2f);
+            left = new Node(position + Vector3.left * squareSize / 2f);
+			above = new Node(position + Vector3.forward * squareSize / 2f);
         }
     }
 }
