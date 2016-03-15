@@ -9,7 +9,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
     public MeshFilter walls;
 
     float squareSize;
-	int giz = 0;
 
     List<Vector3> vertices;
     List<int> triangles;
@@ -51,9 +50,9 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
 		GetComponent<MeshCollider>().sharedMesh = mesh;
     }
+
 	void OnDrawGizmos()
 	{
-		giz = giz + 1;
 		for (int x = 0; x < squareGrid.cubes.GetLength(0); x++)
 		{
 			for (int y = 0; y < squareGrid.cubes.GetLength(1); y++)
@@ -88,6 +87,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			}
 		}
 	}
+
 
     void TriangulateCube(Cube square)
     {
@@ -641,6 +641,162 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
 
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
+			//
 		case 25:
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerBottomFront, square.bottomRightCenter, square.centerRightBack, square.centerTopBack);
 			MeshFromPoints(square.centerTopFront, square.topRightCenter, square.centerRightFront);
