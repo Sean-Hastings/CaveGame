@@ -72,16 +72,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
 						else
 							Gizmos.color = new Color (.1f, .1f, 1f);
 						Gizmos.DrawSphere (node.position, 1.5f);
-						/*
-						Gizmos.color = new Color (.1f, 1f, 1f);
-						Gizmos.DrawLine (node.position, node.left.position);
-
-						Gizmos.color = new Color (1f, 1f, .1f);
-						Gizmos.DrawLine (node.position, node.above.position);
-
-						Gizmos.color = new Color (1f, .1f, 1f);
-						Gizmos.DrawLine (node.position, node.front.position);
-						*/
 					}
 				}
 			}
@@ -484,28 +474,27 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
 		case 35:
-			square.rotateRightHoriz();
 			square.rotateRightVert();
 			square.rotateRightVert();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.centerLeftBack, square.centerBottomBack, square.bottomLeftCenter);
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
 		case 37:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
 			MeshFromPoints (square.centerLeftBack, square.centerBottomBack, square.bottomLeftCenter);
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
 		case 41:
 			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.centerLeftBack, square.centerBottomBack, square.bottomLeftCenter);
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
+			///////////////////////////
 		case 49:
 			square.rotateRightHoriz();
 			square.rotateRightVert();
@@ -641,162 +630,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.topLeftCenter, square.centerLeftFront, square.centerRightFront, square.topRightCenter);
 			break;
 
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
 		case 25:
 			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerBottomFront, square.bottomRightCenter, square.centerRightBack, square.centerTopBack);
 			MeshFromPoints(square.centerTopFront, square.topRightCenter, square.centerRightFront);
