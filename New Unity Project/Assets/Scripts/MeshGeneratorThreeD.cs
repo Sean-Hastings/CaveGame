@@ -596,10 +596,14 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 164:
-			square.rotateRightHoriz();
+			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
