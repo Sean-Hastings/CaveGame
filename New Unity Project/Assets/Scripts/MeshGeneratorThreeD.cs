@@ -1774,6 +1774,10 @@ public class MeshGeneratorThreeD : MonoBehaviour
     {
         AssignVertices(points);
 
+		if (points.Length >= 8)
+			CreateTriangle(points[0], points[6], points[7]);
+		if (points.Length >= 7)
+			CreateTriangle(points[0], points[5], points[6]);
         if (points.Length >= 6)
 			CreateTriangle(points[0], points[4], points[5]);
 		if (points.Length >= 5)
