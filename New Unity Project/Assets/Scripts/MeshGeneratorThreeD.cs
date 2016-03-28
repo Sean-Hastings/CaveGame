@@ -484,29 +484,32 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 37:
 			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 41:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 49:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 50:
-			square.rotateRightVert();
 			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
@@ -514,17 +517,18 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 73:
 			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 74:
-			square.rotateRightHoriz();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
+			/////////////////////////////////////////
 		case 82:
 			square.rotateRightHoriz();
 			square.rotateRightVert();
@@ -1130,17 +1134,17 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 			
 		case 102:
-			MeshFromPoints(square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerTopFront, square.centerLeftFront);
-			MeshFromPoints(square.centerTopBack, square.centerRightBack, square.topRightCenter);
-			MeshFromPoints(square.bottomLeftCenter, square.centerBottomBack, square.centerLeftBack);
-			MeshFromPoints(square.centerBottomFront, square.centerRightFront, square.bottomRightCenter);
+			MeshFromPoints(square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerTopFront);
+			MeshFromPoints(square.bottomRightCenter, square.centerBottomBack, square.bottomLeftCenter, square.centerBottomFront);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerLeftFront, square.bottomLeftCenter, square.centerBottomBack, square.centerRightBack, square.bottomRightCenter, square.centerBottomFront);
 			break;
 		case 153:
 			square.rotateRightHoriz();
-			MeshFromPoints(square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerTopFront, square.centerLeftFront);
-			MeshFromPoints(square.centerTopBack, square.centerRightBack, square.topRightCenter);
-			MeshFromPoints(square.bottomLeftCenter, square.centerBottomBack, square.centerLeftBack);
-			MeshFromPoints(square.centerBottomFront, square.centerRightFront, square.bottomRightCenter);
+			MeshFromPoints(square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerTopFront);
+			MeshFromPoints(square.bottomRightCenter, square.centerBottomBack, square.bottomLeftCenter, square.centerBottomFront);
+			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerTopFront, square.centerRightFront, square.topRightCenter, square.centerTopBack);
+			MeshFromPoints(square.centerLeftFront, square.bottomLeftCenter, square.centerBottomBack, square.centerRightBack, square.bottomRightCenter, square.centerBottomFront);
 			break;
 		
 		// 5 points
