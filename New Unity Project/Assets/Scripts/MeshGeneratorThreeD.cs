@@ -7,6 +7,21 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
     public SquareGrid squareGrid;
     public MeshFilter walls;
+	public bool bGizmos;
+
+	/// <summary>
+	/// //////////////////////////////////////////////////////////////////////////////////
+	/// 
+	///               NEEDS FIX:
+	/// 
+	/// 
+	///               5-fan:_______155
+	///               4-thing:_____228
+	/// 
+	/// 
+	/// 
+	/// //////////////////////////////////////////////////////////////////////////////////
+	/// </summary>
 
     float squareSize;
 
@@ -53,25 +68,22 @@ public class MeshGeneratorThreeD : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		for (int x = 0; x < squareGrid.cubes.GetLength(0); x++)
-		{
-			for (int y = 0; y < squareGrid.cubes.GetLength(1); y++)
-			{
-				for (int z = 0; z < squareGrid.cubes.GetLength(2); z++)
-				{
-					Gizmos.color = new Color (.7f, .7f, .7f);
-					foreach (var node in squareGrid.cubes[x, y, z].getNodes())
-					{
-						Gizmos.DrawSphere (node.position, .75f);
-					}
+		if (bGizmos) {
+			for (int x = 0; x < squareGrid.cubes.GetLength (0); x++) {
+				for (int y = 0; y < squareGrid.cubes.GetLength (1); y++) {
+					for (int z = 0; z < squareGrid.cubes.GetLength (2); z++) {
+						Gizmos.color = new Color (.7f, .7f, .7f);
+						foreach (var node in squareGrid.cubes[x, y, z].getNodes()) {
+							Gizmos.DrawSphere (node.position, .75f);
+						}
 
-					foreach (var node in squareGrid.cubes[x, y, z].getActiveControlNodes())
-					{
-						if (node.active)
-							Gizmos.color = new Color (1f, .1f, .1f);
-						else
-							Gizmos.color = new Color (.1f, .1f, 1f);
-						Gizmos.DrawSphere (node.position, 1.5f);
+						foreach (var node in squareGrid.cubes[x, y, z].getActiveControlNodes()) {
+							if (node.active)
+								Gizmos.color = new Color (1f, .1f, .1f);
+							else
+								Gizmos.color = new Color (.1f, .1f, 1f);
+							Gizmos.DrawSphere (node.position, 1.5f);
+						}
 					}
 				}
 			}
@@ -281,12 +293,12 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 33:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
 			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
 			break;
 		case 72:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.topLeftCenter, square.centerTopBack, square.bottomRightCenter);
 			MeshFromPoints(square.centerLeftBack, square.topLeftCenter, square.centerBottomFront, square.bottomRightCenter, square.centerTopBack);
@@ -485,7 +497,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
 		case 37:
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightVert();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
@@ -528,17 +539,20 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
-			/////////////////////////////////////////
 		case 82:
+			square.rotateRightVert();
 			square.rotateRightHoriz();
-			square.rotateRightVert();
-			square.rotateRightVert();
-			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 88:
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
@@ -558,8 +572,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 133:
 			square.rotateRightVert();
-			square.rotateRightVert();
-			square.rotateRightVert();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
@@ -571,9 +583,9 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 140:
 			square.rotateRightHoriz();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
@@ -600,10 +612,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 164:
-			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
-			square.rotateRightVert();
 			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
@@ -612,7 +622,9 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
 		case 196:
+			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
@@ -630,9 +642,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 76:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
 			MeshFromPoints (square.topLeftCenter, square.centerTopBack, square.centerLeftBack);
 			MeshFromPoints (square.centerTopFront, square.centerBottomFront, square.bottomRightCenter, square.topRightCenter);
 			break;
@@ -669,6 +679,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 152:
 			square.rotateRightVert();
+			square.rotateRightVert();
+			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.bottomRightCenter, square.centerRightFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter, square.centerLeftFront, square.centerBottomFront);
 			MeshFromPoints(square.centerTopFront, square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerRightFront, square.centerBottomFront, square.centerLeftFront);
@@ -681,6 +693,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints(square.centerTopFront, square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerRightFront, square.centerBottomFront, square.centerLeftFront);
 			break;
 		case 100:
+			square.rotateRightVert();
+			square.rotateRightVert();
 			square.rotateRightVert();
 			MeshFromPoints(square.bottomRightCenter, square.centerRightFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter, square.centerLeftFront, square.centerBottomFront);
 			MeshFromPoints(square.centerTopFront, square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerRightFront, square.centerBottomFront, square.centerLeftFront);
@@ -719,39 +733,39 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 			
 		case 51:
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 		case 90:
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 		case 165:
 			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 		case 204:
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 		case 105:
 			square.rotateRightVert();
 			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 		case 150:
 			square.rotateRightHoriz();
 			square.rotateRightVert();
 			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerRightBack, square.centerRightFront);
-			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			MeshFromPoints(square.centerBottomFront, square.centerBottomBack, square.centerRightBack, square.centerRightFront);
 			break;
 			
 		case 29:
@@ -1032,6 +1046,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.bottomRightCenter);
 			break;
 		case 201:
+			square.rotateRightHoriz();
 			square.rotateRightVert();
 			MeshFromPoints(square.centerLeftBack, square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack);
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.bottomRightCenter);
@@ -1232,8 +1247,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 205:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
+			square.rotateRightVert();
+			square.rotateRightVert();
 			square.rotateRightVert();
 			MeshFromPoints(square.centerTopBack, square.topRightCenter, square.bottomRightCenter, square.centerBottomFront, square.topLeftCenter, square.centerLeftBack);
 			MeshFromPoints(square.bottomRightCenter, square.centerTopBack, square.topRightCenter);
@@ -1265,7 +1280,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints(square.centerTopFront, square.topLeftCenter, square.centerBottomFront);
 			break;
 		case 229:
-			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			square.rotateRightVert();
@@ -1299,11 +1313,9 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 220:
 			square.rotateRightHoriz();
-			square.rotateRightVert();
-			square.rotateRightVert();
-			square.rotateRightVert();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
+			square.rotateRightVert();
 			MeshFromPoints(square.centerTopBack, square.topRightCenter, square.bottomRightCenter, square.centerBottomFront, square.topLeftCenter, square.centerLeftBack);
 			MeshFromPoints(square.bottomRightCenter, square.centerTopBack, square.topRightCenter);
 			MeshFromPoints(square.centerTopFront, square.topLeftCenter, square.centerBottomFront);
@@ -1355,8 +1367,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 		case 115:
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
-			square.rotateRightVert();
 			square.rotateRightHoriz();
+			square.rotateRightVert();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.centerTopBack, square.topRightCenter, square.bottomRightCenter, square.centerBottomFront, square.topLeftCenter, square.centerLeftBack);
 			MeshFromPoints(square.bottomRightCenter, square.centerTopBack, square.topRightCenter);
@@ -1568,12 +1580,10 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 222:
 			square.rotateRightHoriz();
-			square.rotateRightHoriz();
 			MeshFromPoints(square.centerLeftBack, square.centerTopBack, square.topLeftCenter);
 			MeshFromPoints(square.bottomRightCenter, square.centerBottomFront, square.centerRightFront);
 			break;
 		case 123:
-			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			square.rotateRightHoriz();
 			MeshFromPoints(square.centerLeftBack, square.centerTopBack, square.topLeftCenter);
@@ -1581,7 +1591,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 		case 183:
 			square.rotateRightHoriz();
-			square.rotateRightVert();
+			square.rotateRightHoriz();
+			square.rotateRightHoriz();
 			MeshFromPoints(square.centerLeftBack, square.centerTopBack, square.topLeftCenter);
 			MeshFromPoints(square.bottomRightCenter, square.centerBottomFront, square.centerRightFront);
 			break;
