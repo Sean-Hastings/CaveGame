@@ -9,20 +9,6 @@ public class MeshGeneratorThreeD : MonoBehaviour
     public MeshFilter walls;
 	public bool bGizmos;
 
-	/// <summary>
-	/// //////////////////////////////////////////////////////////////////////////////////
-	/// 
-	///               NEEDS FIX:
-	/// 
-	/// 
-	///               5-fan:_______155
-	///               4-thing:_____228
-	/// 
-	/// 
-	/// 
-	/// //////////////////////////////////////////////////////////////////////////////////
-	/// </summary>
-
     float squareSize;
 
     List<Vector3> vertices;
@@ -1046,8 +1032,8 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.bottomRightCenter);
 			break;
 		case 201:
-			square.rotateRightHoriz();
 			square.rotateRightVert();
+			square.rotateRightHoriz();
 			MeshFromPoints(square.centerLeftBack, square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack);
 			MeshFromPoints(square.centerRightFront, square.centerBottomFront, square.bottomRightCenter);
 			break;
@@ -1194,11 +1180,10 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			MeshFromPoints(square.centerRightFront, square.topRightCenter, square.centerTopFront);
 			break;
 		case 103:
+			square.rotateRightHoriz();
 			square.rotateRightVert();
 			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
+			square.rotateRightVert();
 			MeshFromPoints(square.centerTopBack, square.centerRightBack, square.bottomRightCenter, square.centerBottomFront, square.centerLeftFront, square.topLeftCenter);
 			MeshFromPoints(square.centerRightFront, square.topRightCenter, square.centerTopFront);
 			break;
