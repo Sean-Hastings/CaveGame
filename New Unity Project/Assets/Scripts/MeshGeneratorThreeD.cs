@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MeshGeneratorThreeD : MonoBehaviour
 {
 
+	public GameObject oneMesh;
     public SquareGrid squareGrid;
     public MeshFilter walls;
 	public bool bGizmos;
@@ -87,45 +88,29 @@ public class MeshGeneratorThreeD : MonoBehaviour
 			break;
 
         // 1 points:
-        case 1:
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+		case 1:
+			Instantiate (oneMesh, square.topLeftFront.position, Quaternion.Euler(new Vector3(0, 270, 180)));
 			break;
 		case 2:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.topLeftBack.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 			break;
 		case 4:
-			square.rotateRightHoriz();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.topRightFront.position, Quaternion.Euler(new Vector3(0, 90, 270)));
 			break;
 		case 8:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.topRightBack.position, Quaternion.Euler(new Vector3(0, 90, 0)));
 			break;
 		case 16:
-			square.rotateRightVert();
-			square.rotateRightVert();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.bottomRightFront.position, Quaternion.Euler(new Vector3(270, 90, 90)));
 			break;
 		case 32:
-			square.rotateRightHoriz();
-			square.rotateRightVert();
-			square.rotateRightVert();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.bottomRightBack.position, Quaternion.Euler(new Vector3(0, 180, 0)));
 			break;
 		case 64:
-			square.rotateRightVert();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.bottomLeftFront.position, Quaternion.Euler(new Vector3(270, 0, 270)));
 			break;
 		case 128:
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.topLeftCenter, square.centerLeftFront, square.centerTopFront);
+			Instantiate (oneMesh, square.bottomLeftBack.position, Quaternion.Euler(new Vector3(0, 270, 0)));
 			break;
 		
 		// 2 points
@@ -2023,7 +2008,7 @@ public class MeshGeneratorThreeD : MonoBehaviour
             ControlNode _topRightBack, 
             ControlNode _bottomRightBack, 
             ControlNode _bottomLeftBack)
-        {
+		{
             topLeftFront      = _topLeftFront;
             topRightFront     = _topRightFront;
             bottomRightFront  = _bottomRightFront;
