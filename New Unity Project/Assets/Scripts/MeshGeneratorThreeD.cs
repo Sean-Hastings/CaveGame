@@ -5,10 +5,13 @@ using System.Collections.Generic;
 public class MeshGeneratorThreeD : MonoBehaviour
 {
 
-	public GameObject oneMesh;
     public SquareGrid squareGrid;
     public MeshFilter walls;
 	public bool bGizmos;
+
+	public GameObject oneMesh;
+	public GameObject threeMesh;
+	public GameObject nineMesh;
 
     float squareSize;
 
@@ -115,73 +118,44 @@ public class MeshGeneratorThreeD : MonoBehaviour
 		
 		// 2 points
 		case 3:
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topLeftFront.position, Quaternion.Euler(new Vector3(90, 270, 0)));
 			break;
 		case 5:
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topLeftFront.position, Quaternion.Euler(new Vector3(0, 90, 90)));
 			break;
 		case 10:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topRightBack.position, Quaternion.Euler(new Vector3(0, 270, 270)));
 			break;
 		case 12:
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topRightBack.position, Quaternion.Euler(new Vector3(270, 0, 270)));
 			break;
 		case 20:
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightVert();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomRightFront.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 			break;
 		case 40:
-			square.rotateRightHoriz();
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightVert();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topRightBack.position, Quaternion.Euler(new Vector3(180, 0, 0)));
 			break;
 		case 48:
-			square.rotateRightVert();
-			square.rotateRightVert();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomRightFront.position, Quaternion.Euler(new Vector3(90, 90, 0)));
 			break;
 		case 65:
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.topLeftFront.position, Quaternion.Euler(new Vector3(0, 180, 0)));
 			break;
 		case 80:
-			square.rotateRightVert();
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomRightFront.position, Quaternion.Euler(new Vector3(0, 270, 90)));
 			break;
 		case 130:
-			square.rotateRightVert();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			square.rotateRightHoriz();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomLeftBack.position, Quaternion.Euler(new Vector3(0, 0, 180)));
 			break;
 		case 160:
-			square.rotateRightHoriz();
-			square.rotateRightVert();
-			square.rotateRightVert();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomLeftBack.position, Quaternion.Euler(new Vector3(0, 90, 270)));
 			break;
 		case 192:
-			square.rotateRightVert();
-			MeshFromPoints(square.centerTopFront, square.centerTopBack, square.centerLeftBack, square.centerLeftFront);
+			Instantiate (threeMesh, square.bottomLeftBack.position, Quaternion.Euler(new Vector3(270, 90, 0)));
 			break;
 
 		case 9:
-			MeshFromPoints(square.topLeftCenter, square.centerTopBack, square.topRightCenter, square.centerTopFront);
-			MeshFromPoints(square.centerLeftFront, square.centerTopFront, square.topRightCenter, square.centerRightBack, square.centerTopBack, square.topLeftCenter);
+			Instantiate (nineMesh, square.topLeftFront.position, Quaternion.Euler(new Vector3(45, 180, 90)));
 			break;
 		case 6:
 			square.rotateRightHoriz();
